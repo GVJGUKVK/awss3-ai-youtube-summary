@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Applicant Information</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body>
+    <!--Navbar-->
+    <div class="items-center flex gap-2 justify-between px-16 py-8 w-full text-base leading-6 text-center bg-white shadow-sm max-md:flex-wrap max-md:px-5 max-md:max-w-full">
+        {% load static %}
+        <a href="/" ><img src="{% static 'logo.png' %}" class="h-10 w-auto" alt="logo" ></a>
+        <div class="flex gap-5 justify-between my-auto ml-auto ">
+            <a class="justify-center px-3.5 py-2.5 text-blue-500  bg-white rounded-2xl border border-blue-300 border-solid max-md:px-5 shadow-sm hover:border-gray-200 transition-colors">Hi!{{ user.username }}</a>
+            <a href="/" class="justify-center px-3.5 py-2.5 text-white bg-blue-500 rounded-2xl border border-white border-solid max-md:px-5 hover:bg-blue-600 transition-colors shadow-sm">Home</a>  
+        </div>
+    </div>  
+    
+    
+    <!--Main Content Container -->
+    <div class="container-center mx-auto  px-10 sm:px-0 py-10">
+        <div class="max-w-3xl  mx-auto bg-white p-6 rounded-lg shadow-md">
+            <!--Blog posts section-->
+            <section>
+                <h2 class="text-2xl text-center mb-4 font-semibold">Summary history</h2>
+                <div class="space-y-4 ">
+                    {% for article in blog_articles reversed %}
+                    <a href="details/{{article.id}}">
+                        <div class="border border-gray-300 p-4 rounded-lg">
+                            <h3 class="text-lg font-semibold">{{article.youtube_title}}</h3>
+                            <p>{{article.generated_content|truncatechars:80}}</p>
+                            
+                        </div>
+                    </a>
+                    <div class="my-4"></div>
+                    {% endfor %}
+                    
+                    <!--Repeat-->
+                    
+
+                </div>
+            </section>
+           
+        </div>
+        
+
+    </div>
+</body>
+</html>
